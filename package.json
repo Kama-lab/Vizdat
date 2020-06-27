@@ -1,0 +1,19 @@
+{
+  "name": "vizdat",
+  "version": "1.0.0",
+  "description": "Visualization of data",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kama-lab/Vizdat.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Kama-lab/Vizdat/issues"
+  },
+  "homepage": "https://github.com/Kama-lab/Vizdat#readme"
+}
