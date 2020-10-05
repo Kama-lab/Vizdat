@@ -1,7 +1,12 @@
 import React from 'react';
 import Plot from 'react-plotly.js';
+import './test.css'
 export default class PlotEx extends React.Component {
-  state = {
+  constructor(props) {
+    super(props)
+    this.updateDimensions = this.updateDimensions.bind(this)
+    this.state = { 
+
     line1: {
       x: [-3, -2, -1],
       y: [1, 2, 3], 
@@ -13,31 +18,34 @@ export default class PlotEx extends React.Component {
       name: 'Line 2'
     }, 
     layout: { 
-      datarevision: 0,
+      autosize: false,
+      width:window.innerWidth,
+      height:window.innerHeight,
+      margin:0
+      
     },
     revision: 0,
   }
-  componentDidMount() {
-    setInterval(this.increaseGraphic, 1000);
-  } 
-  rand = () => parseInt(Math.random() * 10 + this.state.revision, 10);
-  increaseGraphic = () => {
-    const { line1, line2, layout } = this.state;
-    line1.x.push(this.rand());
-    line1.y.push(this.rand());
-    if (line1.x.length >= 10) {
-      line1.x.shift();
-      line1.y.shift();
-    } 
-    line2.x.push(this.rand());
-    line2.y.push(this.rand());
-    if (line2.x.length >= 10) {
-      line2.x.shift();
-      line2.y.shift();
-    }
-    this.setState({ revision: this.state.revision + 1 });
-    layout.datarevision = this.state.revision + 1;
   }
+
+componentDidMount() {
+  this.updateDimensions();
+  window.addEventListener('resize', this.updateDimensions);
+}
+
+componentWillUnmount() {
+  window.removeEventListener('resize', this.updateDimensions);
+}
+
+updateDimensions() {
+  const Layout = {autosize: false, width:window.innerWidth, height:window.innerHeight}
+
+  this.setState({layout:Layout});
+}
+
+
+  
+  
   render() {  
     return (<div>
       <Plot 
@@ -49,6 +57,6 @@ export default class PlotEx extends React.Component {
         revision={this.state.revision}
         graphDiv="graph"
       />
-    </div>);
+    </div>)
   }
 }
