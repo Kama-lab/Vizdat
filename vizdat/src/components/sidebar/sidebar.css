@@ -1,0 +1,12 @@
+.sidebar-header {
+	width:100%;
+	font-size: 2em;
+}
+
+.sidebar-menu {
+	display: block;
+	width:400px;
+	position: 	absolute;
+	background-color: 	blue;	
+}
+

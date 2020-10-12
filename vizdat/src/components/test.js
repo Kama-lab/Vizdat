@@ -20,9 +20,7 @@ export default class PlotEx extends React.Component {
     layout: { 
       autosize: false,
       width:window.innerWidth,
-      height:window.innerHeight,
-      margin:0
-      
+      height:window.innerHeight
     },
     revision: 0,
   }
@@ -39,7 +37,6 @@ componentWillUnmount() {
 
 updateDimensions() {
   const Layout = {autosize: false, width:window.innerWidth, height:window.innerHeight}
-
   this.setState({layout:Layout});
 }
 
