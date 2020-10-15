@@ -5,8 +5,13 @@ export default class PlotEx extends React.Component {
   constructor(props) {
     super(props)
     this.updateDimensions = this.updateDimensions.bind(this)
-    this.state = { 
-
+    this.state = {
+      sidebar:0,
+      layout: { 
+      autosize: false,
+      width:window.innerWidth,
+      height:window.innerHeight
+    },
     line1: {
       x: [-3, -2, -1],
       y: [1, 2, 3], 
@@ -17,11 +22,6 @@ export default class PlotEx extends React.Component {
       y: [-3, -2, -1],
       name: 'Line 2'
     }, 
-    layout: { 
-      autosize: false,
-      width:window.innerWidth,
-      height:window.innerHeight
-    },
     revision: 0,
   }
   }
@@ -35,8 +35,15 @@ componentWillUnmount() {
   window.removeEventListener('resize', this.updateDimensions);
 }
 
+updateDimensionsAfterToggle() {
+  //this.setState({sidebar:Math.abs(this.state.sidebar-300)})
+  const Layout = {autosize: false, width:(window.innerWidth - this.state.sidebar), height:window.innerHeight}
+  this.setState({layout:Layout});
+}
+
 updateDimensions() {
-  const Layout = {autosize: false, width:window.innerWidth, height:window.innerHeight}
+  //this.setState({sidebar:Math.abs(this.state.sidebar-300)})
+  const Layout = {autosize: false, width:(window.innerWidth  - this.props.isSidebarOn), height:window.innerHeight}
   this.setState({layout:Layout});
 }
 
@@ -54,6 +61,10 @@ updateDimensions() {
         revision={this.state.revision}
         graphDiv="graph"
       />
+      <div>
+      {this.state.width}
+      {this.state.sidebar}
+      </div>
     </div>)
   }
 }
