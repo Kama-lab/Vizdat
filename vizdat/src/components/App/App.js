@@ -6,7 +6,7 @@ class App extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {isMenuOpen:false,
-			isSidebarOn:300
+			isSidebarOn:0
 		};
 
 		this.toggleMenu = this.toggleMenu.bind(this);
@@ -15,7 +15,7 @@ class App extends React.Component {
 		toggleMenu() {
 			this.setState(state=>({isMenuOpen:!this.state.isMenuOpen}));
 			this.setState({isSidebarOn:Math.abs(this.state.isSidebarOn-300)})
-			this.child.current.updateDimensionsAfterToggle();
+			this.child.current.updateDimensionsAfterToggle(this.state.isSidebarOn);
 		}
 		render() {
 			return (<div>
