@@ -19,8 +19,8 @@ class App extends React.Component {
 		}
 		render() {
 			return (<div>
+			<Toggle onMenuToggle={this.toggleMenu} isMenuOpen={this.state.isMenuOpen}/>
   			<PlotEx ref={this.child}/>
-  			<Toggle onMenuToggle={this.toggleMenu} isMenuOpen={this.state.isMenuOpen}/>
   			</div>);
 		}
 		

@@ -17,3 +17,9 @@
 		transform: translate(100px);
 	}
 }
+
+.toggle-menu Button {
+	background-color: transparent;
+	width:20px;
+	height: 30px;
+}
