@@ -12,16 +12,10 @@ export default class PlotEx extends React.Component {
       width:window.innerWidth,
       height:window.innerHeight
     },
-    line1: {
-      x: [-3, -2, -1],
-      y: [1, 2, 3], 
-      name: 'Line 1'
-    },
-    line2: {
-      x: [1, 2, 3],
-      y: [-3, -2, -1],
-      name: 'Line 2'
-    }, 
+    pie_chart : {
+            values: [1, 2, 2],
+            type: 'pie',
+          },
     revision: 0,
   }
   }
@@ -41,6 +35,15 @@ updateDimensionsAfterToggle(isSidebarOn) {
   this.setState({layout:Layout});
 }
 
+updateGraph(value_one,value_two,value_three) {
+  const Pie_chart = {
+    values:[value_one,value_two,value_three],
+    type:'pie'
+  }
+  
+  this.setState({pie_chart:Pie_chart})
+}
+
 updateDimensions() {
   const Layout = {autosize: false, width:(window.innerWidth  - this.state.sidebar), height:window.innerHeight}
   this.setState({layout:Layout});
@@ -54,14 +57,11 @@ updateDimensions() {
       <div className={`sidebar-container${this.state.sidebar == 0 ? 'closed':''}`}>
       </div>
       <div>
-      <Plot 
+      <Plot
         data={[
-          this.state.line1,
-          this.state.line2,
+          this.state.pie_chart,
         ]}
-        layout={this.state.layout}
-        revision={this.state.revision}
-        graphDiv="graph"
+        layout={ this.state.layout }
       />
     </div>
     </div>)

@@ -5,6 +5,7 @@ import Button from 'react-bootstrap/Button';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
+import SidebarController from '../sidebar/controller'
 
 export default class Toggle extends React.Component {
 	constructor(props) {
@@ -14,9 +15,10 @@ export default class Toggle extends React.Component {
 		render(){
 			return (
 				<div className={`toggle-menu${this.props.isMenuOpen === true ? 'open':''}`}>
-				<div class="toggle-button">
-				<Button className={this.props.isMenuOpen === true ? "toggle-button-open":"toggle-button-closed"} variant="light" type="button" size="sm" onClick={this.props.onMenuToggle}>
+				<Button className={`toggle-button${this.props.isMenuOpen === true ? 'open':''}`} variant="light" type="button" size="sm" onClick={this.props.onMenuToggle}>
 				{this.props.isMenuOpen ? <ArrowForwardIosIcon/>:<ArrowBackIosIcon/>}</Button>
+				<div className="sidebar">
+					<SidebarController ref={this}/>
 				</div>
 				</div>
 			);
