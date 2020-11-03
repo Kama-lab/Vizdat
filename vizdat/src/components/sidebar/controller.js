@@ -6,22 +6,27 @@ export default class SidebarController extends React.Component {
 	constructor(props) {
 		super(props)
 		this.state = {
-			input_value_one:2,
-			input_value_two:2,
-			input_value_three:2,
+			input1:3,
+			input2:2,
+			input3:2,
 		}
+	this.changeHandler = this.changeHandler.bind(this)
 	}
 
-	handleChange(nth_value) {
-		this.child.current.updateGraph(this.state.input_value_one,this.state.input_value_two,this.state.input_value_three)
+	changeHandler(e) {
+		this.props.onChange(e.target.value)
+		//this.setState({input1:e.target.value})
+		// if (typeof this.props.onChange == 'function') {
+			
+		// }
 	}
 
 	render() {
 		return (
 			<div>
-				<input type="text" value={this.state.input_value_one} onChange={this.handleChange} />
-				<input type="text" value={this.state.input_value_two} onChange={this.handleChange}/>
-				<input type="text" value={this.state.input_value_three} onChange={this.handleChange}/>
+				<input type="text" value={this.props.value} onChange={this.changeHandler} />
+				<input type="text" value={this.props.value} onChange={this.changeHandler}/>
+				<input type="text" value={this.props.value} onChange={this.changeHandler}/>
 			</div>
 			)
 	}
